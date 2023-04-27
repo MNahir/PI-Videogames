@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { Videogame, Genre } = require('../db');
 const { API_KEY } = process.env;
 
 const getInfoId = async(id) => {
@@ -8,7 +7,7 @@ const getInfoId = async(id) => {
         getGameById = getGameById.data;
         getGameById = {
             id: getGameById.id,
-            image: getGameById.background_image?getGameById.background_image:'https://besthqwallpapers.com/Uploads/8-3-2020/124076/thumb2-404-wallpaper-not-found-violet-sign-4k-violet-brickwall-404-wallpaper-not-found-violet-blank-display.jpg',
+            image: getGameById.background_image,
             name: getGameById.name,
             description: getGameById.description_raw,
             genres: getGameById.genres.map(el => el.name),

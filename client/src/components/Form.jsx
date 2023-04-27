@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createVideogame, getByGenres, getPlatforms } from "../redux/actions";
-import s from '../style/Create.module.css'
+import s from '../style/Form.module.css'
 import { NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 
@@ -60,12 +60,12 @@ export default function Create() {
 
   const generos = useSelector((state) => state.genres);
   const plataformas = useSelector(state => state.platforms);
-  const allNames = useSelector(state => state.allVideogames)
+  const allNames = useSelector(state => state.allVideogames);
 
   
   useEffect(() => {
     dispatch(getByGenres());
-    dispatch(getPlatforms())
+    dispatch(getPlatforms());
   }, [dispatch])
   
   function handleSubmit(e) {
@@ -76,7 +76,7 @@ export default function Create() {
     } else {
         let error = Object.keys(validate(input)) // Object.keys(errors) --> errors = {} => devuelve un array de strings q representa todas las propiedades del objeto
         //solo habra propiedades si es que HAY ALGUN ERROR
-        if(error.length !== 0 || !input.genres.length /* || !input.platforms.length */) { //Entonces si hay algun error, error va a ser un array con la propiedad en donde haya un error, osea que su length !== 0
+        if(error.length !== 0 || !input.genres.length || !input.platforms.length ) { //Entonces si hay algun error, error va a ser un array con la propiedad en donde haya un error, osea que su length !== 0
           alert('Complete los campos correctamente')
           return
         } else {
@@ -124,6 +124,8 @@ export default function Create() {
       })
     }
   }
+
+ 
 
   function handleDeleteG(e) {
     setInput({
@@ -230,10 +232,10 @@ export default function Create() {
 
           <div className={s.grupo}>
               <select className={s.select_create} id="platforms" defaultValue="" onChange={(e) => handlePlatforms(e)}>
-                  <option className={s.option_create} value="" disabled hidden>Select the platforms...</option>
+                  <option className={s.option_create} value="" disabled hidden>Select the platform...</option>
                   {plataformas?.map(p => {
                     return (
-                      <option className={s.option_create} value={p.name} key={p.name}>{p.name}</option>
+                      <option className={s.option_create} value={p.platforms} key={p.id}>{p.platforms}</option>
                       );
                     })}
               </select> <span className={s.barra}></span>

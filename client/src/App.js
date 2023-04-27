@@ -3,7 +3,7 @@ import './App.css';
 import Home from './components/Home';
 import LandingPage from './components/LandingPage';
 import Detail from './components/Detail';
-import Create from './components/Create';
+import Create from './components/Form';
 import Page404 from './components/Page404';
 
 function App() {

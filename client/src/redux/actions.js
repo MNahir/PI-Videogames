@@ -8,7 +8,7 @@ export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const ORDER_BY = "ORDER_BY";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
 export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
-export const GET_PLATFORMS = 'GET_PLATFORMS'
+export const GET_PLATFORMS = 'GET_PLATFORMS';
 
 export const getAllVideogames = () => {
   return async (dispatch) => {
@@ -112,11 +112,17 @@ export const filterByGenres = (payload) => {
 
 export const getPlatforms = () => {
   return async (dispatch) => {
-      const url = await axios.get('http://localhost:3001/videogames/platforms')
-      //console.log(url)
+      const url = await axios.get('http://localhost:3001/videogames')
       return dispatch({
           type: 'GET_PLATFORMS',
-          payload: url.data
+          payload: url.data,
       })
   }
 };
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@ import {
     ORDER_BY,
     FILTER_BY_SOURCE,
     FILTER_BY_GENRES,
-    GET_PLATFORMS
+    GET_PLATFORMS,
 } from './actions'
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
     videogames : [],
     videogame: [],
     genres: [],
-    platforms: []
+    platforms: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -26,16 +26,19 @@ function rootReducer(state = initialState, action) {
                 allVideogames: action.payload,
                 videogames: action.payload //de reserva
             };
+
         case GET_NAMES: //para mi searchbar
             return {
                 ...state,
                 allVideogames: action.payload
             };
+
         case GET_VIDEOGAME: //para mi ruta de detalle
             return {
                 ...state,
                 videogame: action.payload
             };
+
         case GET_BY_GENRES:
             return {
                 ...state,
@@ -53,6 +56,7 @@ function rootReducer(state = initialState, action) {
                 case 'All':
                     ordenamiento = [...state.allVideogames];
                     break;
+
                 case 'A-Z':
                     ordenamiento = vgCopy.sort(function(a, b) {
                         if (a.name.toLowerCase() > b.name.toLowerCase()) {
@@ -64,6 +68,7 @@ function rootReducer(state = initialState, action) {
                         return 0;
                     });
                     break;
+
                 case 'Z-A':
                     ordenamiento = vgCopy.sort(function(a, b) {
                         if(a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -75,11 +80,13 @@ function rootReducer(state = initialState, action) {
                           return 0;
                     })
                     break;
+
                 case 'RatingAsc':
                     ordenamiento = vgCopy.sort(function(a, b) {
                         return a.rating - b.rating
                     })
                     break;
+
                 case 'RatingDesc':
                     ordenamiento = vgCopy.sort(function(a, b) {
                         return b.rating - a.rating
@@ -94,6 +101,7 @@ function rootReducer(state = initialState, action) {
                 allVideogames: ordenamiento,
                 videogames : ordenamiento
             };
+
         case FILTER_BY_GENRES:
             let aux = [];
             if(action.payload) {
@@ -128,15 +136,17 @@ function rootReducer(state = initialState, action) {
                     ...state,
                     allVideogames: filtrado
                 };
+                
         case GET_PLATFORMS:
             return {
                 ...state,
                 platforms: [...action.payload]
             }
-        default:
-      return {
-        ...state,
-      };
+
+                  default:
+                 return { ...state };
+
+
     }
 }
 

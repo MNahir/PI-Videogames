@@ -35,9 +35,7 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
-    website: {
-      type: DataTypes.STRING
-    }
+  
   },{
     sequelize,
     modelName: 'Videogame'
