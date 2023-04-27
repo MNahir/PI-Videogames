@@ -8,7 +8,7 @@ import {
     FILTER_BY_SOURCE,
     FILTER_BY_GENRES,
     GET_PLATFORMS,
-} from './actions'
+} from "./actions-Type";
 
 const initialState = {
     allVideogames : [],
@@ -56,7 +56,8 @@ function rootReducer(state = initialState, action) {
                 case 'All':
                     ordenamiento = [...state.allVideogames];
                     break;
-
+//método toLowerCase convierte los strings en minúsculas antes de compararlas, y asi el sort puede ordenarlos independiente de las mayúsculas y minúsculas.
+            
                 case 'A-Z':
                     ordenamiento = vgCopy.sort(function(a, b) {
                         if (a.name.toLowerCase() > b.name.toLowerCase()) {
@@ -102,9 +103,9 @@ function rootReducer(state = initialState, action) {
                 videogames : ordenamiento
             };
 
-        case FILTER_BY_GENRES:
-            let aux = [];
-            if(action.payload) {
+            case FILTER_BY_GENRES:
+                let aux = [];
+                if(action.payload) {
                 aux = state.videogames.filter(e => {
                     if(e.genres.length === 0){
                         return e.genres
@@ -115,9 +116,9 @@ function rootReducer(state = initialState, action) {
                         return e.genres.includes(action.payload)
                     }
                 })
-            } else {
+                } else {
                 aux = state.videogames
-            }
+                }
 
             return {
                 ...state,
@@ -145,7 +146,6 @@ function rootReducer(state = initialState, action) {
 
                   default:
                  return { ...state };
-
 
     }
 }

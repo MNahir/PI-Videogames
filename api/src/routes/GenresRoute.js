@@ -19,7 +19,7 @@ router.get('/', async(req, res) => {
         res.status(200).json(allGenres);
     }
     catch(e){
-        res.status(404).send('Ups! Sorry, there was an error creating a genres :(')
+        res.status(404).send('Sorry, there was an error creating a genres :(')
     };
 });
 

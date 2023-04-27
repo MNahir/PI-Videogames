@@ -16,7 +16,6 @@ export const Videogames = ({currentGames}) => {
         dispatch(getAllVideogames()).then(() => setCarga(false)) //me traigo la action creators q me trae todos mis videojuegos de la API
     }, [dispatch])
 
-    //const allVideogames = useSelector(state => state.allVideogames) //me traigo del reducer el estado en donde guarde todos mis videojuegos
 
     if (carga) {
         return <Loading />;
@@ -25,14 +24,15 @@ export const Videogames = ({currentGames}) => {
     return (
         <div className={s.main}>
             {currentGames.length > 0 ?
-            currentGames?.map(v => {
+            currentGames?.map(game => {
                 return (<CardVideogame
-                    key={v.id}
-                    id={v.id}
-                    image={v.image ? v.image : img}
-                    name={v.name}
-                    genres={v.genres?.map(e => typeof (e) === 'object' ? e.name : e).join(', ')}
-                    rating={v.rating}
+                    key={game.id}
+                    id={game.id}
+                    image={game.image ? game.image : img}
+                    name={game.name}
+                    genres={game.genres?.map(e => typeof (e) === 'object' ? e.name : e).join(', ')}
+                    platforms={game.platforms?.map(e => typeof (e) === 'object' ? e.name : e).join(', ')}
+                    rating={game.rating}
                     />)}) : <Error /> }
 
         </div>

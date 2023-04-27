@@ -2,7 +2,27 @@ import React from "react";
 import s from '../style/CardVideogame.module.css'
 import { NavLink } from "react-router-dom";
 
-class CardVideogame extends React.Component {
+
+const CardVideogame = ({ id, name, genres, rating, image }) => {
+
+    return (
+        <div className={s.card}>
+            <img src={image} width="400px" height="250px" alt=""/>
+                <div className={s.card__content}>
+                <h3 className={s.nombre}>{name}</h3>
+                <p className={s.genres}>{genres}</p>
+                <p className={s.rating}>⭐ {rating}</p>
+             <  NavLink to={`/detail/${id}`} className={s.navLink}><span className={s.leer_mas}>Read more</span></NavLink>
+               </div>
+        </div>
+    )
+}
+
+export default CardVideogame;
+
+
+//component class
+/* class CardVideogame extends React.Component {
 
     render() {
         return (
@@ -17,8 +37,6 @@ class CardVideogame extends React.Component {
             </div>
         )
     }
+};
 
-}
-
-
-export default CardVideogame
+export default CardVideogame; */

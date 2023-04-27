@@ -58,7 +58,7 @@
     font-family: monospace;
     font-size: 20px;
     position: absolute;
-    top: -25px;
+    top: -20px;
     left: 5px;
     transition: 0.5s all;
     pointer-events: none;
@@ -67,7 +67,7 @@
 .create_input:focus~.label,
 .create_input:valid~.label {
     top: -14px;
-    font-size: 15px;
+    font-size: 20px;
     color: white;
 }
 
@@ -91,7 +91,7 @@ textarea {
 .description {
     color: white;
     font-family: monospace;
-    font-size: 18px;
+    font-size: 20px;
     position: absolute;
     top: -25px;
     left: 5px;
@@ -136,7 +136,7 @@ textarea:valid~.label{
     margin: 10px auto;
     color: #fff;
     height: 40px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
     cursor: pointer;
     box-shadow: 
@@ -149,8 +149,9 @@ textarea:valid~.label{
 }
 
 .select_create {
-    background-color: #FFCDB2;
+    background-color: #e7bfda;
     color: black;
+    width: 800px;
     padding: 7px;
     font-size: 16px;
     appearance: button;
@@ -166,7 +167,7 @@ textarea:valid~.label{
   .danger {
       color: #d90429;
       line-height: 0px;
-      font-size: 12px;
+      font-size: 15px;
       margin-top: 10px;
   }
 

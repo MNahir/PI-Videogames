@@ -15,7 +15,7 @@ const Paginado = ({gamesPerPage, allGames, paginado}) => {
             <div className={s.paginacion}>
                 {pageNumber && pageNumber.map(number => ( //si en pageNumber hay algo mapealo
                     <span key={number}>
-                        <button className={s.btn} onClick={() => paginado(number)}>{number}</button> {/* y por cada elemento renderizame un boton y agregales un evento onClick, el cual establecera el numero de pagina en el que me encuentro*/}
+                        <button className={s.btn} onClick={() => paginado(number)}>{number}</button> {/* y por cada elemento renderiza un boton y agrega un evento onClick, el cual establecera el numero de pagina en el que me encuentro*/}
                     </span>
                 ))}
             </div>
@@ -24,6 +24,4 @@ const Paginado = ({gamesPerPage, allGames, paginado}) => {
 }
 
 
-
-
-export default Paginado
+export default Paginado;

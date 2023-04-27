@@ -12,9 +12,9 @@ const getInfo = async() => {
             let getApi = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`);
 
             listGames.push(getApi);
-
             i++;
         };
+
         listGames = (await Promise.all(listGames)).map(el => el.data.results.map(el => {
             return({
                 id: el.id,
@@ -31,7 +31,6 @@ const getInfo = async() => {
         return allGames;
     }
     catch(e) {
-        console.log(e)
         return [{ error: 'Not found.' }];
     }
 };

@@ -2,47 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createVideogame, getByGenres, getPlatforms } from "../redux/actions";
-import s from '../style/Form.module.css'
+import { createVideogame, getByGenres, getPlatforms } from "../../redux/actions";
+import s from '../../style/Form.module.css'
 import { NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+import { validate } from './formValidate';
 
 
-function validate (input) {
-  let errors = {}
-
-  if(!input.name) {
-    errors.name = 'El nombre es requerido'
-  } else if(!/^[a-zA-Z0-9-() .]+$/.test(input.name)){
-    errors.name = 'Solo se aceptan letras, numeros, guiones medios y parentesis'
-  }
-
-  if(input.image.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.image)){
-    errors.image='invalid URL'
-  }
-
-  if(!input.description) {
-    errors.description = 'La descripcion es requerida'
-  } else if (input.description.length > 100) {
-    errors.description = 'La descripcion es muy larga. (Max = 100 caracteres)'
-  }
-
-  if(!input.released) {
-    errors.released = 'La fecha de lanzamiento es requerida'
-  }
-
-  if(!input.rating) {
-    errors.rating = 'El rating es requerido'
-  } else if(input.rating > 5) {
-    errors.rating = 'El rating no debe ser mayor a 5'
-  } else if(input.rating < 0) {
-    errors.rating = 'El rating no puede ser un numero negativo'
-  }
-
-  return errors //la funcion validate devuelve el objeto errors, ya sea vacio o con alguna propiedad si es q encuentra un error
-}
-
-export default function Create() {
+export default function Form() {
   const [input, setInput] = useState({
     name: "",
     image: "",
@@ -70,6 +37,7 @@ export default function Create() {
   
   function handleSubmit(e) {
     e.preventDefault();
+
     let noRepeat = allNames.filter(n => n.name === input.name)
     if(noRepeat.length !== 0) {
       alert('Ya existe un juego con ese nombre, por favor elija otro')
@@ -140,6 +108,7 @@ export default function Create() {
       platforms: input.platforms.filter((plat) => plat !== e)
     });
   }
+
 
   return (
     <div>

@@ -27,11 +27,11 @@ router.get('/:id', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-    let { name, image, description, released, rating, genres, platforms, website } = req.body;
+    let { name, image, description, released, rating, genres, platforms } = req.body;
 
     try{
         let createVideogame = await Videogame.create({
-            name, image, description, released, rating, platforms, website
+            name, image, description, released, rating, platforms
         });
         
         let genreByDb = await Promise.all(genres.map(async el=> {
@@ -45,7 +45,7 @@ router.post('/', async(req, res) => {
         await createVideogame.addGenre(genreByDb);
 
         let gameCreated = (await Videogame.findOne({
-            attributes: [ 'name', 'image', 'id', 'description', 'released', 'rating', 'platforms', 'website' ],
+            attributes: [ 'name', 'image', 'id', 'description', 'released', 'rating', 'platforms' ],
             where: {
                 name: name,
             },
@@ -66,7 +66,6 @@ router.post('/', async(req, res) => {
             rating: gameCreated.rating,
             platforms: gameCreated.platforms,
             genres: gameCreated.Genres.map(el => el.name),
-            website: gameCreated.website
         };
         res.status(200).json(gameCreated);
     }

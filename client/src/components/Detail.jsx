@@ -18,7 +18,7 @@ function Detail() {
     }, [dispatch, id])
 
     const details = useSelector(state => state.videogame)
-    //console.log(details)
+  
 
     if (carga) {
         return <Loading />;
@@ -56,4 +56,4 @@ function Detail() {
     )
 }
 
-export default Detail
+export default Detail;
