@@ -1,5 +1,5 @@
 import React from 'react'
-import i from '../imagenes/kirby_sad_by_lisuplaygames_dazwi2p-fullview.png'
+import i from '../imagenes/kirby.jpg'
 import s from '../style/Error.module.css'
 
 export default function Error () {

@@ -100,12 +100,14 @@ export const createVideogame = (videogame) => {
         `http://localhost:3001/videogame`,
         videogame
       );
+      alert("Felicidades, el juego fue creado exitosamente.");
       return dispatch({
         type: CREATE_VIDEOGAME,
         payload: data,
       });
+
     } catch (err) {
-      console.error(err);
+      alert("Disculpe, el videojuego no pudo ser creado.");
     }
   };
 };

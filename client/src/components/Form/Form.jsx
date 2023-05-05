@@ -58,7 +58,7 @@ export default function Form() {
             genres: [],
             platforms: [],
           });
-          alert("Felicidades, el juego fue creado exitosamente.");
+          
         }
         navigate('/home')
 

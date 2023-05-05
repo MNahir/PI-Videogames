@@ -32,7 +32,6 @@ export default function SearchBar () {
                 <div className={s.buscar}>
                     <span htmlFor="name"></span>
                     <input 
-                        //type="search"
                         type='text'
                         id="name"
                         autoComplete="off"
