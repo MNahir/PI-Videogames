@@ -7,9 +7,9 @@ import Form from './components/Form/Form';
 import Page404 from './components/Page404';
 /* import axios from "axios";
 
-//axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.baseURL = 'https://pi-videogames-back-production.up.railway.app/';
- */
+axios.defaults.baseURL = "http://localhost:3001"; */
+//axios.defaults.baseURL = 'https://pi-videogames-back-production.up.railway.app/';
+
 
 function App() {
   return (
